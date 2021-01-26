@@ -1,0 +1,7 @@
+.modal-open {
+    overflow: visible;
+}
+
+.modal-body {
+    z-index: 1050;
+}
