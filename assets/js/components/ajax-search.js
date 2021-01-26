@@ -51,8 +51,10 @@ export default class AjaxSearch {
 
     search() {
         this.peuplerFilmSelect($(this.selectCategory).val());
+        this.createFilmCards($(this.selectCategory).val());
         $(this.selectCategory).change((e) => {
             this.peuplerFilmSelect(e.currentTarget.value);
+            this.createFilmCards(e.currentTarget.value);
         });
     }
 
@@ -87,6 +89,66 @@ export default class AjaxSearch {
                     ;
                 });
                 */
+            });
+        }
+        else $(this.selectProducts).html('<option value="">Select a movie</option>');
+    }
+
+    createFilmCards(categoryId) {
+        if (categoryId != "") {
+            $.ajax({
+                data : {
+                    request : 'by_category',
+                    category_id : categoryId
+                },
+                method : 'get',
+                url : this.apiUrl,
+
+            }).fail(() => {
+                console.log('AJAX REQUEST FAIL !');
+
+            }).done((movies) => {
+                //console.log(movies);
+                const pageCart = $('#products-container').data('pagecart');
+                $('#products-container').html('<div class="row"></div>');
+
+                for (let i = 0 ; i < movies.length ; i++) {
+                    $('#products-container .row').append(
+                        `<div class="col-lg-3 col-md-6">
+                            <article class="card my-3">
+                                <img src="assets/img/movies/${movies[i].image}" alt="${movies[i].title}" />
+                                <div class="card-body">
+                                    <h3 class="card-title">${movies[i].title}</h3>
+                                    <p class="card-text">${movies[i].description}</p>
+                                </div>
+                                <form action="${pageCart}" method="post" class="list-group list-group-flush">
+                                    <input type="hidden" name="product_id" value="${movies[i].id}" />
+                                    <input type="number" name="quantity" value="" min="0" />
+                                    <input type="submit" />
+                                </form>
+                            </article>
+                        </div>
+                        `)
+                    ;
+                }
+
+                $('#products-container form').submit((e) => {
+                    e.preventDefault();
+                    const form = e.currentTarget;
+
+                    $.ajax({
+                        data: $(form).serialize(),
+                        method : $(form).attr('method'),
+                        url : $(form).attr('action'),
+                        dataType: "html"
+
+                    }).fail(() => {
+                        console.log('AJAX REQUEST FAIL !');
+
+                    }).done((htmlCart) => {
+                        console.log(htmlCart);
+                    });
+                });
             });
         }
         else $(this.selectProducts).html('<option value="">Select a movie</option>');
