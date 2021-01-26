@@ -136,17 +136,34 @@ export default class AjaxSearch {
                     e.preventDefault();
                     const form = e.currentTarget;
 
+                    // product image
+                    const zoomRatio = 50; // in pixel
+                    let productThumb = $(e.currentTarget).parent('article').children('img');
+                    //console.log(productThumb);
+                    $(productThumb).animate({
+                        top : $(productThumb).offset().top - zoomRatio/2  +'px',
+                        left: $(productThumb).offset().left - zoomRatio/2 +'px',
+                        width: $(productThumb).width() + zoomRatio + 'px',
+                        height: $(productThumb).height() + zoomRatio + 'px',
+                    }, 400);
+
                     $.ajax({
                         data: $(form).serialize(),
                         method : $(form).attr('method'),
                         url : $(form).attr('action'),
-                        dataType: "html"
+                        //dataType: "html"
 
                     }).fail(() => {
                         console.log('AJAX REQUEST FAIL !');
 
                     }).done((htmlCart) => {
-                        console.log(htmlCart);
+                        //console.log(htmlCart);
+                        $(this.modal)
+                            .appendTo('body')
+                            .find('.modal-body')
+                            .append($(htmlCart).find('#cart-container').html())
+                            .modal()
+                        ;
                     });
                 });
             });
