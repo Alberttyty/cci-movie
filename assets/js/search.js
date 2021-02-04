@@ -3,4 +3,8 @@ import Printer from './components/printer.js';
 
 let ajaxSearch = new AjaxSearch('#movies-categories');
 
-let productPrinter = new Printer('#form-cart');
+$(document).ajaxSuccess(() => {
+    $('.card img').on('click', (e) => {
+        let productPrinter = new Printer('#form-cart', e.currentTarget);
+    });
+});
