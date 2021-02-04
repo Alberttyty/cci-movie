@@ -162,8 +162,9 @@ export default class AjaxSearch {
                             .appendTo('body')
                             .find('.modal-body')
                             .append($(htmlCart).find('#cart-container').html())
-                            .modal()
                         ;
+
+                        $(`#${$(this.modal).attr('id')}`).modal();
                     });
                 });
             });
@@ -200,8 +201,9 @@ export default class AjaxSearch {
                         </ul>
                     </article>
                 `)
-                .modal()
             ;
+
+            $(`#${$(this.modal).attr('id')}`).modal();
         });
     }
 }
