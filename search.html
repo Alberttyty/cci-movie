@@ -12,22 +12,45 @@
     </header>
 
     <main id="content">
-        <section id="products-search">
-            <form action="https://cci.pixel-plurimedia.fr" method="post" class="container form-container">
-                <h2>Products search</h2>
+        <section id="products-search" class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <form action="https://cci.pixel-plurimedia.fr" method="post" class="container form-container">
+                        <h2>Products search</h2>
 
-                <select id="movies-categories" name="movies-categories" data-select-products="#movies">
-                    <option value="">Catégorie de film</option>
-                    <option value="1">SF</option>
-                    <option value="2">Comédie dramatique</option>
-                    <option value="3">Action</option>
-                    <option value="4">Western</option>
-                </select>
+                        <select id="movies-categories" name="movies-categories" data-select-products="#movies">
+                            <option value="">Catégorie de film</option>
+                            <option value="1">SF</option>
+                            <option value="2">Comédie dramatique</option>
+                            <option value="3">Action</option>
+                            <option value="4">Western</option>
+                        </select>
 
-                <select id="movies" name="movies">
+                        <select id="movies" name="movies">
 
-                </select>
-            </form>
+                        </select>
+                    </form>
+                </div>
+
+                <div class="col-md-6">
+                    <form id="form-cart" action="/cart.php" method="post">
+                        <input type="hidden" name="product_id" />
+                        <input type="hidden" name="combinaison_id" />
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="product-width">Width</label>
+                                <input id="product-width" class="form-control" type="number" name="width" value="" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="product-height">Height</label>
+                                <input id="product-height" class="form-control" type="number" name="height" value="" />
+                            </div>
+                        </div>
+                        <input type="submit" />
+                    </form>
+                </div>
+            </div>
         </section>
 
         <section id="products-container" class="container" data-pagecart="https://cci.pixel-plurimedia.fr/cart.php">
