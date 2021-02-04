@@ -34,17 +34,17 @@
 
                 <div class="col-md-6">
                     <form id="form-cart" action="/cart.php" method="post">
-                        <input type="hidden" name="product_id" />
-                        <input type="hidden" name="combinaison_id" />
-                        
+                        <input type="hidden" name="product_id" value="" required />
+                        <input type="hidden" name="combination_id" value="" required />
+
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="product-width">Width</label>
-                                <input id="product-width" class="form-control" type="number" name="width" value="" />
+                                <label for="product-width">Width (cm)</label>
+                                <input id="product-width" class="form-control" type="number" name="width" value="" required />
                             </div>
                             <div class="col-md-6">
-                                <label for="product-height">Height</label>
-                                <input id="product-height" class="form-control" type="number" name="height" value="" />
+                                <label for="product-height">Height (cm)</label>
+                                <input id="product-height" class="form-control" type="number" name="height" value="" required />
                             </div>
                         </div>
                         <input type="submit" />
