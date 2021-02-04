@@ -26,6 +26,8 @@ if (! empty($_POST['product_id']) && ! empty($_POST['quantity'])
     echo('</html>'.PHP_EOL);
 }
 
+if (! empty($_POST['surface']) $pseCombinaisons[$_POST['surface']];
+
 if (! empty($_POST['product_id']) && ! empty($_POST['combination_id'])
     //&& isset($_SERVER['HTTP_X_REQUESTED_WITH'])
     //&& strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'
@@ -43,7 +45,7 @@ if (! empty($_POST['product_id']) && ! empty($_POST['combination_id'])
     echo('<p>Please, send a POST "product_id" and "combination_id".</p>'.PHP_EOL);
     echo('<div id="cart-container">'.PHP_EOL);
     echo('<p>'.PHP_EOL);
-    echo($pseMovies[$_POST['product_id']]['movie']->title.' => '.$pseMovies[$_POST['product_id']]['combinations'][$_POST['combination_id']]['price'].' € <br />added to cart'.PHP_EOL);
+    echo($pseMovies[$_POST['product_id']]['movie']->title.' => '.$pseMovies[$_POST['product_id']]['combinations'][$_POST['combination_id']].' € <br />added to cart'.PHP_EOL);
     echo('</p>'.PHP_EOL);
     echo('</div>'.PHP_EOL);
     echo('</body>'.PHP_EOL);
