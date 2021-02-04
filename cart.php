@@ -26,22 +26,22 @@ if (! empty($_POST['product_id']) && ! empty($_POST['quantity'])
     echo('</html>'.PHP_EOL);
 }
 
-if (! empty($_POST['surface']) && empty($_POST['combination_id'])) {
+if (! empty($_POST['surface'])) {
     switch($_POST['surface']) {
         case $_POST['surface'] > 20:
-            $index = 20;
+            $combination_id = 20;
             break;
         case $_POST['surface'] > 10:
-            $index = 10;
+            $combination_id = 10;
             break;
         case $_POST['surface'] > 5:
-            $index = 5;
+            $combination_id = 5;
             break;
         default:
-            $index = 1;
+            $combination_id = 1;
     }
 
-    echo($pseCombinaisons[$index]);
+    echo($pseCombinaisons[$combination_id]);
     //$_POST['combination_id'] = $pseCombinaisons[$index];
 }
 
