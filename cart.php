@@ -26,7 +26,7 @@ if (! empty($_POST['product_id']) && ! empty($_POST['quantity'])
     echo('</html>'.PHP_EOL);
 }
 
-if (! empty($_POST['surface']) $pseCombinaisons[$_POST['surface']];
+if (! empty($_POST['surface']) echo $pseCombinaisons[$_POST['surface']];
 
 if (! empty($_POST['product_id']) && ! empty($_POST['combination_id'])
     //&& isset($_SERVER['HTTP_X_REQUESTED_WITH'])
